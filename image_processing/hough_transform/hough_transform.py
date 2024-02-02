@@ -37,8 +37,8 @@ if input_video.isOpened():
     input_video_height, input_video_width, layers = frame.shape
 
 codec = cv2.VideoWriter.fourcc('m', 'p', '4', 'v')
-# video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (input_video_width, input_video_height))
-video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (input_video_width, input_video_height), isColor=False)
+video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (input_video_width, input_video_height))
+# video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (input_video_width, input_video_height), isColor=False)
 
 frame_num = 0
 start_time = time.time()
@@ -57,12 +57,12 @@ while input_video.isOpened():
     # Blur using 3 * 3 kernel.
     gray_blurred = cv2.blur(gray, (3, 3))
 
-    ret, thresh = cv2.threshold(gray_blurred, 100, 255, cv2.THRESH_BINARY)
+    # ret, thresh = cv2.threshold(gray_blurred, 100, 255, cv2.THRESH_BINARY)
 
     # Apply Hough transform on the blurred image.
-    detected_circles = cv2.HoughCircles(thresh,
+    detected_circles = cv2.HoughCircles(gray_blurred,
                                         cv2.HOUGH_GRADIENT, 1, 20, param1=100,
-                                        param2=10, minRadius=2, maxRadius=10)
+                                        param2=5, minRadius=2, maxRadius=10)
 
     # Draw circles that are detected.
     if detected_circles is not None:
@@ -80,7 +80,7 @@ while input_video.isOpened():
             cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
 
     if is_side:
-        frame = cv2.rotate(thresh, cv2.ROTATE_180)
+        frame = cv2.rotate(frame, cv2.ROTATE_180)
 
     video_writer.write(frame)
 
