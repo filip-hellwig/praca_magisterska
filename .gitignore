@@ -2,7 +2,11 @@
 /Lib
 /Scripts
 /squash_rec
-/squash_rec2
 pyvenv.cfg
-/image_processing/hough_transform/outputs
-/tools/outputs
+image_processing/hough_transform/outputs
+neural_networks/yolo/datasets
+neural_networks/yolo/predictions
+neural_networks/yolo/runs
+tools/resize_output/
+tools/video_output
+tools/google_output

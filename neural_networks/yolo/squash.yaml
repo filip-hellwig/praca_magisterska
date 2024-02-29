@@ -1,0 +1,5 @@
+train: ..\praca_magisterska\neural_networks\yolo\datasets\images\train
+val: ..\praca_magisterska\neural_networks\yolo\datasets\images\val
+
+names:
+    0: Ball

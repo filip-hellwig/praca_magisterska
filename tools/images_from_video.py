@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 
 cap = cv2.VideoCapture('../squash_rec/side_2.mp4')
-output_filename = "outputs/out_"
+output_filename = "video_output/out_"
 output_extension = ".jpg"
 
 file_num = 1
