@@ -27,8 +27,8 @@ def resize_images_in_directory(input_dir, output_dir, new_width, new_height):
             print(f"Resized {file_name} and saved to {output_path}")
 
 # Example usage
-input_directory = "dataset/squash game small"
-output_directory = "resize_output"
+input_directory = "video_output_cropped"
+output_directory = "resize_output_cropped"
 new_width = 640
 new_height = 640
 

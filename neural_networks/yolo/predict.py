@@ -2,22 +2,16 @@ from ultralytics import YOLO
 import cv2
 from PIL import Image
 
-model = YOLO("runs/test2/weights/best.pt")
+model = YOLO("runs/video_test/weights/best.pt")
 
 model.predict(
-    source='../../squash_rec/side_2.mp4',
-    # conf=0.75,
+    source='../../squash_rec/side_4.mp4',
+    # source='../../house_videos/test1.mp4',
+    conf=0.1,
     # show=True,
     project='predictions',
-    name='side_pred1',
+    name='video_test_5_epochs_low_conf',
     save=True,
     save_frames=True,
     max_det=1
 )
-
-# res = res.plot(line_width=1)
-# res = res[:, :, ::-1]
-# res = Image.fromarray(res)
-# res.save("output")
-
-

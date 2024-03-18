@@ -4,11 +4,11 @@ model = YOLO("yolov8m.pt")
 
 model.train(
     data='squash.yaml',
-    epochs=20,
+    epochs=10,
     imgsz=(640,640),
     batch=4,
     project='runs',
-    name='test',
+    name='video_test_10_epochs_200',
     exist_ok=True,
     plots=True,
 )
