@@ -12,7 +12,7 @@ is_side = True
 frame_rate = 25
 max_frame = 5 * frame_rate
 start_m_second = 14 * 1000
-playback_frame_rate = 2
+playback_frame_rate = 25
 
 # Front Video
 # output_video_name = 'output_front.mp4'

@@ -7,7 +7,7 @@ import time
 
 # Side Video
 output_video_name = 'outputs/output_side_sub.mp4'
-input_video = cv2.VideoCapture('../../squash_rec/side_2.mp4')
+input_video = cv2.VideoCapture('../../squash_rec/testing_video.mp4')
 is_side = True
 frame_rate = 25
 max_frame = 10 * frame_rate

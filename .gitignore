@@ -4,6 +4,8 @@
 /squash_rec
 pyvenv.cfg
 image_processing/hough_transform/outputs
+image_processing/haar_cascade/dataset
+image_processing/haar_cascade/dataset - Copy
 neural_networks/yolo/datasets
 neural_networks/yolo/predictions
 neural_networks/yolo/runs
@@ -15,3 +17,5 @@ tools/video_output
 tools/google_output
 tools/resize_output_cropped
 tools/video_output_cropped
+tools/crop_video/outputs/
+
