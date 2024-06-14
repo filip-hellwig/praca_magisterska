@@ -3,10 +3,20 @@ import os
 import numpy as np
 import time
 
+# METHOD PARAMS
+
+p_blur = 3
+p_minDist = 20
+p_param1 = 100
+p_param2 = 5
+p_minRadius = 2
+p_maxRadius = 10
+
 # VALUES DEPENDING ON VIDEO
 
 # Side Video
-output_video_name = 'outputs/output_side.mp4'
+# output_video_name = 'outputs/output_side.mp4'
+output_video_name = 'outputs/ht;blur=3;m=HG;minDist=20;param1=100;param2=5;minRadius=2;maxRadius=10.mp4'
 input_video = cv2.VideoCapture('../../squash_rec/side_2.mp4')
 is_side = True
 frame_rate = 25

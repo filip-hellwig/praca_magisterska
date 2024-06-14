@@ -3,7 +3,6 @@
 /Scripts
 /squash_rec
 pyvenv.cfg
-image_processing/hough_transform/outputs
 image_processing/haar_cascade/dataset
 image_processing/haar_cascade/dataset - Copy
 neural_networks/yolo/datasets
@@ -12,10 +11,26 @@ neural_networks/yolo/runs
 neural_networks/yolo/datasets_google_resized/
 neural_networks/yolo/datasets_google_wo_resized/
 neural_networks/yolo/datasets_video_100/
+neural_networks/yolo/400_1980_1080/
+neural_networks/yolo/400_640_360/
+neural_networks/yolo/400_640_640/
+neural_networks/yolo/dataset/
+neural_networks/yolo/old_datasets/
+neural_networks/yolo/raw_dataset_1920_1080/
+neural_networks/yolo/raw_dataset_640_360/
+neural_networks/yolo/raw_dataset_640_640/
+neural_networks/yolo/raw_dataset_864_864/
+neural_networks/yolo/yolov8l.pt
+neural_networks/yolo/yolov8s.pt
 tools/resize_output/
 tools/video_output
 tools/google_output
 tools/resize_output_cropped
 tools/video_output_cropped
-tools/crop_video/outputs/
-
+*outputs/
+*outputs_old/
+*haar_cascade/
+photos/
+image_processing/sift/first_frame
+image_processing/sift/sift_example.jpg
+image_processing/sift/sift_keypoints.jpg

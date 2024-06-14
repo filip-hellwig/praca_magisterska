@@ -3,16 +3,27 @@ import os
 import numpy as np
 import time
 
+start = time.time()
+
+# METHOD PARAMS
+
+p_blur = 3
+p_minDist = 50
+p_param1 = 200
+p_param2 = 5
+p_minRadius = 1
+p_maxRadius = 5
+
 # VALUES DEPENDING ON VIDEO
 
 # Side Video
-output_video_name = 'outputs/output_side_sub.mp4'
+output_video_name = f'outputs/ht;blur={p_blur};m=HG;minDist={p_minDist};param1={p_param1};param2={p_param2};minRadius={p_minRadius};maxRadius={p_maxRadius}.mp4'
 input_video = cv2.VideoCapture('../../squash_rec/testing_video.mp4')
 is_side = True
 frame_rate = 25
 max_frame = 10 * frame_rate
-start_m_second = 70 * 1000
-playback_frame_rate = 2
+start_m_second = 0 * 1000
+playback_frame_rate = 1
 
 # Front Video
 # output_video_name = 'output_front.mp4'
@@ -36,6 +47,10 @@ if input_video.isOpened():
     print(input_video.get(cv2.CAP_PROP_FPS ))
 
     ret, frame = input_video.read()
+
+    if not ret:
+        print("Can't receive frame (stream end?). Exiting ...")
+
     input_video_height, input_video_width, layers = frame.shape
 
 codec = cv2.VideoWriter.fourcc('m', 'p', '4', 'v')
@@ -43,6 +58,7 @@ video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (i
 # video_writer = cv2.VideoWriter(output_video_name, codec, playback_frame_rate, (input_video_width, input_video_height), isColor=False)
 
 frame_num = 0
+detected_num = 0
 start_time = time.time()
 
 while input_video.isOpened():
@@ -59,14 +75,14 @@ while input_video.isOpened():
     gray = cv2.subtract(frame_to_sub, gray)
 
     # Blur using 3 * 3 kernel.
-    gray_blurred = cv2.blur(gray, (3, 3))
+    gray_blurred = cv2.blur(gray, (p_blur, p_blur))
 
     # ret, thresh = cv2.threshold(gray_blurred, 100, 255, cv2.THRESH_BINARY)
 
     # Apply Hough transform on the blurred image.
     detected_circles = cv2.HoughCircles(gray_blurred,
-                                        cv2.HOUGH_GRADIENT, 1, 100, param1=100,
-                                        param2=5, minRadius=1, maxRadius=10)
+                                        cv2.HOUGH_GRADIENT, 1, p_minDist, param1=p_param1,
+                                        param2=p_param2, minRadius=p_minRadius, maxRadius=p_maxRadius)
 
     # Draw circles that are detected.
     if detected_circles is not None:
@@ -82,6 +98,7 @@ while input_video.isOpened():
 
             # Draw a small circle (of radius 1) to show the center.
             cv2.circle(frame, (a, b), 1, (0, 0, 255), 3)
+            detected_num += 1
 
     if is_side:
         frame = cv2.rotate(frame, cv2.ROTATE_180)
@@ -97,6 +114,10 @@ while input_video.isOpened():
 
     frame_num = frame_num + 1
     print(frame_num)
+
+print(detected_num)
+end = time.time()
+print(end - start)
 
 cv2.destroyAllWindows()
 input_video.release()
