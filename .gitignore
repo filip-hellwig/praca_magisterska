@@ -22,6 +22,7 @@ neural_networks/yolo/raw_dataset_640_640/
 neural_networks/yolo/raw_dataset_864_864/
 neural_networks/yolo/yolov8l.pt
 neural_networks/yolo/yolov8s.pt
+neural_networks/yolo/yolov8m.pt
 tools/resize_output/
 tools/video_output
 tools/google_output
@@ -34,3 +35,5 @@ photos/
 image_processing/sift/first_frame
 image_processing/sift/sift_example.jpg
 image_processing/sift/sift_keypoints.jpg
+house_videos
+learn_photos
